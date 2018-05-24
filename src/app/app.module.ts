@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
@@ -12,6 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { MessagesComponent } from './messages/messages.component';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import {DynamicFormQuestionComponent} from './dynamic-form-question/dynamic-form-question.component';
+import {DynamicFormComponent} from './dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    ReactiveFormsModule,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -30,8 +35,11 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() { }
+}
